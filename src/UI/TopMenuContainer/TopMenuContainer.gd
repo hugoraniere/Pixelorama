@@ -655,8 +655,8 @@ func _setup_help_menu() -> void:
 		"Restore Backup": &"",
 		"Open Editor Data Folder": "open_editor_data_folder",
 		"Changelog": "changelog",
-		"About Pixelorama": "about_pixelorama",
-		"Support Pixelorama's Development": &"",
+		"About Indie Gen": "about_pixelorama",
+		"Support Original Pixelorama Project": &"",
 	}
 	var i := 0
 	for item in help_menu_items:
@@ -757,7 +757,7 @@ func _on_open_last_project_file_menu_option_pressed() -> void:
 	if Global.config_cache.has_section_key("data", "last_project_path"):
 		main.load_last_project()
 	else:
-		Global.popup_error("You haven't saved or opened any project in Pixelorama yet!")
+		Global.popup_error("You haven't saved or opened any project in Indie Gen yet!")
 
 
 func _save_project_file() -> void:

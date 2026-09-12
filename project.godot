@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Pixelorama"
-config/description="Unleash your creativity with Pixelorama, a powerful and accessible open-source pixel art multitool. Whether you want to create sprites, tiles, animations, or just express yourself in the language of pixel art, this software will realize your pixel-perfect dreams with a vast toolbox of features."
+config/name="Indie Gen"
+config/description="Indie Gen's pixel art editor — create sprites, tiles, and animations for your game, with AI-assisted tools built in. Forked from Pixelorama, the open-source pixel art multitool by Orama Interactive."
 config/version="v1.2.3-dev"
 config/tags=PackedStringArray("pixelorama")
 run/main_scene="res://src/Main.tscn"

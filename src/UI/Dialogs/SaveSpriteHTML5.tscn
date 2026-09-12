@@ -29,6 +29,6 @@ unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "If enabled, the final blended images are also being stored in the pxo, for each frame.
 This makes the pxo file larger and is useful for importing by third-party software
-or CLI exporting. Loading pxo files in Pixelorama does not need this option to be enabled."
+or CLI exporting. Loading pxo files in Indie Gen does not need this option to be enabled."
 mouse_default_cursor_shape = 2
 text = "Include blended images"

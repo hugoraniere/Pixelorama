@@ -4,6 +4,6 @@
 size = Vector2i(675, 400)
 ok_button_text = "Save"
 access = 2
-filters = PackedStringArray("*.pxo ; Pixelorama Project")
+filters = PackedStringArray("*.pxo ; Indie Gen Project")
 option_count = 1
 option_0/name = "Include blended images"
