@@ -7,6 +7,7 @@ const TOOL_CARD_TSCN := preload("res://src/UI/AIToolsPanel/ToolCard.tscn")
 
 @onready var content: VBoxContainer = %Content
 @onready var generate_form_dialog: ConfirmationDialog = %GenerateFormDialog
+@onready var utility_tool_dialog: ConfirmationDialog = %UtilityToolDialog
 
 
 func _ready() -> void:
@@ -26,4 +27,8 @@ func _populate(category_id: String) -> void:
 
 func _on_tool_pressed(tool_id: String) -> void:
 	var tool_info := AIToolsData.find_tool(tool_id)
-	generate_form_dialog.open_for_tool(tool_id, tool_info.get("title", tool_id))
+	var title: String = tool_info.get("title", tool_id)
+	if AIGenerationClient.UTILITY_ENDPOINTS.has(tool_id):
+		utility_tool_dialog.open_for_tool(tool_id, title)
+	else:
+		generate_form_dialog.open_for_tool(tool_id, title)
