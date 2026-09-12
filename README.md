@@ -1,3 +1,83 @@
+## Sobre este fork
+
+Este é um fork do [Pixelorama](https://github.com/Orama-Interactive/Pixelorama)
+original, mantido pela [Orama Interactive](https://github.com/Orama-Interactive) —
+todo o crédito pelo editor em si é deles. Uso esse fork como base pro editor visual
+da **Pixel Foundry**, onde pretendo adicionar painéis de geração de pixel art por IA
+(Create/Transform/Animate/Utility) por cima do editor já existente. Ainda não há
+nenhuma mudança de código nesta etapa — só confirmação de que o fork builda e roda
+igual ao upstream.
+
+Licenciado sob a mesma [licença MIT](LICENSE) do projeto original — veja o arquivo
+`LICENSE` na raiz, preservado sem alterações.
+
+- Repositório original (upstream): https://github.com/Orama-Interactive/Pixelorama
+- Este fork: https://github.com/hugoraniere/Pixelorama
+
+### Versão do Godot
+
+**Godot 4.7.2 stable** — confirmada em `project.godot`
+(`config/features=PackedStringArray("4.7")`) e nos workflows de CI do próprio
+projeto (`.github/workflows/dev-web.yml`, `GODOT_VERSION: 4.7.2`). Use exatamente
+essa versão; versões de patch diferentes de 4.x podem ter bugs de compatibilidade.
+
+Instalação no macOS via Homebrew:
+
+```bash
+brew install --cask godot
+godot --version  # deve mostrar 4.7.2.stable...
+```
+
+### Rodar em desenvolvimento
+
+Abra a pasta do projeto no editor do Godot (via `Project > Import` ou
+`godot --editor --path .`) e rode com o botão de play, ou direto pela CLI:
+
+```bash
+godot --path .
+```
+
+Na primeíssima vez que abrir, o Godot precisa (re)importar todos os recursos do
+projeto — isso pode gerar mensagens de "Parse Error" transitórias em scripts que
+usam autoloads referenciados por UID (ex.: `Applinks`), porque o cache de UIDs
+(`.godot/uid_cache.bin`) ainda não existe. É um artefato conhecido de clone novo,
+não um bug do projeto — feche e abra o editor uma segunda vez e os erros somem.
+
+### Gerar o build Web
+
+Os presets de export (incluindo "Web") já vêm configurados em
+`export_presets.cfg`. Primeiro, baixe os export templates da versão exata (uma vez
+só, ~1.2GB, todas as plataformas):
+
+```bash
+curl -L -o /tmp/export_templates.tpz \
+  "https://github.com/godotengine/godot-builds/releases/download/4.7.2-stable/Godot_v4.7.2-stable_export_templates.tpz"
+mkdir -p ~/Library/Application\ Support/Godot/export_templates/4.7.2.stable
+unzip -q /tmp/export_templates.tpz -d /tmp/godot_templates
+mv /tmp/godot_templates/templates/* ~/Library/Application\ Support/Godot/export_templates/4.7.2.stable/
+```
+
+Depois, exporte via linha de comando (sem precisar abrir a UI do editor):
+
+```bash
+mkdir -p build/web
+godot --headless --path . --export-release "Web" build/web/index.html
+```
+
+E sirva localmente pra testar no navegador:
+
+```bash
+cd build/web && python3 -m http.server 8080
+# abra http://localhost:8080
+```
+
+O build usa a variante single-threaded do export Web (sem `SharedArrayBuffer`), por
+isso funciona com um servidor HTTP simples — não precisa configurar os headers
+`Cross-Origin-Opener-Policy`/`Cross-Origin-Embedder-Policy` que a variante
+multi-thread exigiria.
+
+---
+
 <p align="center">
     <h1 align = "center">Pixelorama - pixelate your dreams!</h1>
 </p>
