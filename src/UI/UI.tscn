@@ -26,6 +26,8 @@
 [ext_resource type="Script" uid="uid://bfi1mm158ge5l" path="res://addons/dockable_container/dockable_container.gd" id="35"]
 [ext_resource type="Script" uid="uid://da67x3ua6ietw" path="res://addons/dockable_container/layout_panel.gd" id="36"]
 [ext_resource type="Script" uid="uid://bssab6bm6lntw" path="res://src/UI/UI.gd" id="37"]
+[ext_resource type="PackedScene" path="res://src/UI/AIToolsPanel/AIToolRail.tscn" id="40"]
+[ext_resource type="PackedScene" path="res://src/UI/AIToolsPanel/AIToolContentPanel.tscn" id="41"]
 
 [sub_resource type="Resource" id="Resource_xnnnd"]
 resource_name = "Tabs"
@@ -166,10 +168,34 @@ percent = 0.0103806
 first = SubResource("Resource_xnnnd")
 second = SubResource("Resource_s2xu6")
 
+[sub_resource type="Resource" id="Resource_airail"]
+resource_name = "Tabs"
+script = ExtResource("36")
+names = PackedStringArray("AI Tool Rail")
+
+[sub_resource type="Resource" id="Resource_aicontent"]
+resource_name = "Tabs"
+script = ExtResource("36")
+names = PackedStringArray("AI Tool Panel")
+
+[sub_resource type="Resource" id="Resource_aisplit"]
+resource_name = "Split"
+script = ExtResource("27")
+percent = 0.2
+first = SubResource("Resource_airail")
+second = SubResource("Resource_aicontent")
+
+[sub_resource type="Resource" id="Resource_rootwrap"]
+resource_name = "Split"
+script = ExtResource("27")
+percent = 0.75
+first = SubResource("Resource_cwe4h")
+second = SubResource("Resource_aisplit")
+
 [sub_resource type="Resource" id="Resource_b6o2t"]
 resource_name = "Layout"
 script = ExtResource("14")
-root = SubResource("Resource_cwe4h")
+root = SubResource("Resource_rootwrap")
 hidden_tabs = {
 "Canvas Preview": true,
 "Color Picker Sliders": true,
@@ -373,6 +399,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Palettes" parent="DockableContainer" unique_id=1759517791 instance=ExtResource("20")]
+layout_mode = 2
+
+[node name="AI Tool Rail" parent="DockableContainer" instance=ExtResource("40")]
+layout_mode = 2
+
+[node name="AI Tool Panel" parent="DockableContainer" instance=ExtResource("41")]
 layout_mode = 2
 
 [node name="Tiles" parent="DockableContainer" unique_id=1039496240 instance=ExtResource("23_wyr78")]

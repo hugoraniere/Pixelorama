@@ -44,6 +44,8 @@ Keychain="*uid://dgiia2xg7fsud"
 ExtensionsApi="*res://src/Autoload/ExtensionsApi.gd"
 Themes="*res://src/Autoload/Themes.gd"
 Applinks="*uid://bwxc40knpboql"
+AIToolsData="*res://src/Autoload/AIToolsData.gd"
+AIGenerationClient="*res://src/Autoload/AIGenerationClient.gd"
 
 [debug]
 

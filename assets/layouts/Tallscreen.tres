@@ -139,10 +139,34 @@ percent = 0.459538
 first = SubResource("Resource_otntk")
 second = SubResource("Resource_1xpva")
 
+[sub_resource type="Resource" id="Resource_airail"]
+resource_name = "Tabs"
+script = ExtResource("1_t44r1")
+names = PackedStringArray("AI Tool Rail")
+
+[sub_resource type="Resource" id="Resource_aicontent"]
+resource_name = "Tabs"
+script = ExtResource("1_t44r1")
+names = PackedStringArray("AI Tool Panel")
+
+[sub_resource type="Resource" id="Resource_aisplit"]
+resource_name = "Split"
+script = ExtResource("2_rngtv")
+percent = 0.2
+first = SubResource("Resource_airail")
+second = SubResource("Resource_aicontent")
+
+[sub_resource type="Resource" id="Resource_rootwrap"]
+resource_name = "Split"
+script = ExtResource("2_rngtv")
+percent = 0.75
+first = SubResource("Resource_6dytr")
+second = SubResource("Resource_aisplit")
+
 [resource]
 resource_name = "Tallscreen"
 script = ExtResource("3_v86xb")
-root = SubResource("Resource_6dytr")
+root = SubResource("Resource_rootwrap")
 hidden_tabs = {
 "3D Object Tree": true,
 "Perspective Editor": true,

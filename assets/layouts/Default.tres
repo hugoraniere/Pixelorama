@@ -169,10 +169,34 @@ percent = 0.0
 first = SubResource("Resource_epagr")
 second = SubResource("Resource_2qk0j")
 
+[sub_resource type="Resource" id="Resource_airail"]
+resource_name = "Tabs"
+script = ExtResource("1_jxh43")
+names = PackedStringArray("AI Tool Rail")
+
+[sub_resource type="Resource" id="Resource_aicontent"]
+resource_name = "Tabs"
+script = ExtResource("1_jxh43")
+names = PackedStringArray("AI Tool Panel")
+
+[sub_resource type="Resource" id="Resource_aisplit"]
+resource_name = "Split"
+script = ExtResource("2_lw52w")
+percent = 0.2
+first = SubResource("Resource_airail")
+second = SubResource("Resource_aicontent")
+
+[sub_resource type="Resource" id="Resource_rootwrap"]
+resource_name = "Split"
+script = ExtResource("2_lw52w")
+percent = 0.75
+first = SubResource("Resource_msuil")
+second = SubResource("Resource_aisplit")
+
 [resource]
 resource_name = "Default"
 script = ExtResource("3_4h5wj")
-root = SubResource("Resource_msuil")
+root = SubResource("Resource_rootwrap")
 hidden_tabs = {
 "3D Object Tree": true,
 "Canvas Preview": true,
